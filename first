@@ -1,0 +1,59 @@
+import random
+import tkinter as tk
+
+window = tk.Tk()
+window.title("Calorie Converter fat, carbohydrate and protein")
+window.geometry("600x200")
+
+def fat_to_calories ():
+    fatAmount = float(entry1.get())
+    calorie_from_fat = fatAmount * 9
+     #one gram of fat contain 9 calories
+    return calorie_from_fat
+
+def carbohydrate_to_calories():
+    carbAmount = float(entry2.get())
+    calorie_from_carb = carbAmount * 4
+    return calorie_from_carb
+
+def protein_to_calories():
+    proteinAmount = float(entry3.get())
+    calorie_from_protein = proteinAmount * 9
+     #one gram of protein contain 4 calories
+    return calorie_from_protein
+
+def main():
+    calorie_total = fat_to_calories() + carbohydrate_to_calories() + protein_to_calories()
+    total_display = tk.Text(master=window, height=100, width=30)
+    total_display.grid(column=1, row=5) #after the user's press the button they will see the the total calorie
+    
+    total_display.insert(tk.END, calorie_total)
+
+
+    
+#------LABEL-------
+label1 = tk.Label(text="amount(gram)")
+label1.grid(column=1, row=0)
+
+label2 = tk.Label(text="Enter the fat amount")
+label2.grid(column=0, row=1)
+label3 = tk.Label(text="Enter the carbohydrate amount ")
+label3.grid(column=0, row=2)
+label4 = tk.Label(text="Enter the protein amount ")
+label4.grid(column=0, row=3)
+
+
+#-------ENTRIES-------
+entry1 = tk.Entry()
+entry1.grid(column=1, row=1)
+entry2 = tk.Entry()
+entry2.grid(column=1, row=2)
+entry3 = tk.Entry()
+entry3.grid(column=1, row=3)
+
+#------BUTTON------
+button1 = tk.Button(text="Calculate Calorie", command=main) # command function give the ability to call any function
+button1.grid(column=1, row=4)
+
+
+window.mainloop()
